@@ -12,7 +12,7 @@
         sb.append(Integer.toString((hash[i] & 0xff) + 0x100, 16).substring(1));
     }
     pass = sb.toString();
-    
+    //hej mads
     Class.forName("com.mysql.jdbc.Driver");
     Connection con = DriverManager.getConnection("jdbc:mysql://159.89.99.105/CupCakeDB2",
             "Juste", "admin");
