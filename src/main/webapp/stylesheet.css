@@ -1,0 +1,59 @@
+a
+{
+    display: block;
+}
+
+p
+{
+    margin: 0px;
+}
+
+a, h1, h2, p, label, input
+{
+    font-family: arial;
+}
+
+form
+{
+    margin: 10px 0px;
+}
+
+#formSearch, #formCreate
+{
+    background: black;
+    width: 10px;
+    padding: 50px 100px;
+    margin: auto;
+    border: 2px black solid;
+}
+
+#formSearch *, #formCreate *
+{
+    width: 50%;
+    display: block;
+    margin: 5px 0px;
+    padding: 0px;
+    border: 2px darkgray solid;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+#formSearch label, #formCreate label
+{
+    background: blue;
+    color: black;
+}
+
+#usersFound a
+{
+    background: lightgray;
+    text-align: center;
+    margin: 10px;
+    color: black;
+    text-decoration: none;
+}
+
+.special
+{
+    background: yellow;
+}

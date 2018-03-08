@@ -1,0 +1,7 @@
+entity\User.class
+datamapper\DataMapperInterface.class
+dbconnector\DBConnector.class
+servlet\Control.class
+datamapper\DataMapperTest.class
+datamapper\DataMapper.class
+datasource\DataSource.class
