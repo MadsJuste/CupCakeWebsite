@@ -30,7 +30,7 @@
                         <option value="8">Lemon 8.00kr</option>
                         <option value="9">Blue Cheese 9.00kr</option>
                     </select>
-              
+              <input type="number" name="amount" placeholder="Enter amount..."/>
              <br>
              <input type="hidden" name="origin" value="placeOrder" />
           <input type="submit" value="Submit Cupcake" />

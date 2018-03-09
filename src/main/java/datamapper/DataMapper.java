@@ -266,4 +266,30 @@ public class DataMapper implements DataMapperInterface
         
         return user;
     }
+    
+    public boolean createOrder(Order o)
+    {
+        try
+        {
+            dbc.open();
+
+            String sql = "insert into orderItem values(?, ?, ?)";
+            PreparedStatement preparedStatement = dbc.preparedStatement(sql);
+            preparedStatement.setInt(1, o.getBot());
+            preparedStatement.setInt(2, o.getTop());
+            preparedStatement.setInt(3, o.getAmount());
+            preparedStatement.executeUpdate();
+
+            dbc.close();
+
+            return true;
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+    
 }
