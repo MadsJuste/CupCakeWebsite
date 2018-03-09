@@ -6,6 +6,7 @@ a
 a, h1, h2, p, label, input
 {
     font-family: times new roman;
+    color: #F5FFFA;
 }
 
 body{
@@ -15,9 +16,9 @@ body{
     text-align: center;
     left: 600px;
     top: 50%;
-    background-color: lightgrey;
+    background-color: #4E2E28;
     width: 600px;
-    border: 1px solid black;
+    border: 20px solid #3B0B0B;
     padding: 25px;
     margin: auto;
 }
