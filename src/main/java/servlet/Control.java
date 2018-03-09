@@ -3,6 +3,7 @@ package servlet;
 import datamapper.DataMapper;
 import datasource.DataSource;
 import entity.User;
+import entity.Order;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
@@ -93,11 +94,18 @@ public class Control extends HttpServlet {
                 int bot = Integer.parseInt(request.getParameter("bottom"));
                 int top = Integer.parseInt(request.getParameter("topping"));
                 int amount = Integer.parseInt(request.getParameter("amount"));
-                
-                dm.createOrder(new Order(bot, top, amount));
-                
-                response.sendRedirect("user.jsp");
+
+                dm.createOrder(new Order(bot, top, amount), (User) request.getSession().getAttribute("user"));
+
                 response.sendRedirect("ordered.jsp");
+            }
+            case "seeOrders": {
+
+                ArrayList<Order> orders = dm.getOrders((User) request.getSession().getAttribute("user"));
+                
+                request.getSession().setAttribute("users", dm.getOrders((User) request.getSession().getAttribute("user")));
+                
+                response.sendRedirect("orders.jsp");
             }
         }
     }

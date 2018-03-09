@@ -23,4 +23,9 @@ public class Order {
     public int getAmount() {
         return amount;
     }
+
+    @Override
+    public String toString() {
+        return String.format("You have ordered %d cupcakes with bottom type %d and topping type %d", this.amount, this.bot, this.top);
+    }
 }
