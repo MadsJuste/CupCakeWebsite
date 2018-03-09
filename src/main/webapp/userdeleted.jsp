@@ -7,6 +7,7 @@
         <title>WebProject - UserDeleted</title>
     </head>
     <body>
+        <%@include file="includes/menu.jsp" %>
         <div>
         <h1>USER DELETED</h1>
         

@@ -1,6 +1,7 @@
 entity\User.class
 datamapper\DataMapperInterface.class
 dbconnector\DBConnector.class
+entity\Order.class
 servlet\Control.class
 datamapper\DataMapperTest.class
 datamapper\DataMapper.class

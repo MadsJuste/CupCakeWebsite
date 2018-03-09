@@ -4,16 +4,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="CreateSearch.css" rel="stylesheet" type="text/css"/>
-        <title>WebProject</title>
+        <title>CupCakeWebShop</title>
 
     </head>
     <body>
         
-       
-        <ul>
-            <li><a href="index.jsp">Front page</a></li>
-            <li><a href="login.jsp">Login</a></li>
-        </ul>
+        <%@include file="includes/menu.jsp" %>
+        
         
 
         

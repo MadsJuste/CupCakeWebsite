@@ -107,6 +107,9 @@ public class Control extends HttpServlet {
                 
                 response.sendRedirect("orders.jsp");
             }
+             case "order": {         
+                response.sendRedirect("ordering.jsp");
+            }
         }
     }
 

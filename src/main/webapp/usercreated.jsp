@@ -7,6 +7,7 @@
         <title>WebProject - UserCreated</title>
     </head>
     <body>
+        <%@include file="includes/menu.jsp" %>
         <div>
         <h1>USER CREATED</h1>
         

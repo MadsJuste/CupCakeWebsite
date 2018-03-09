@@ -3,12 +3,15 @@ a
     display: block;
 }
 
-a, h1, h2, p, label, input
+a, h1, h2, p, label 
 {
     font-family: times new roman;
     color: #F5FFFA;
 }
-
+input{
+     font-family: times new roman;
+    color: #000000;
+}
 body{
     background-image: url("cupcakes.jpg");
 }

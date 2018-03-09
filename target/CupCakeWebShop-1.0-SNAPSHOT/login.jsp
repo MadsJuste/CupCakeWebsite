@@ -7,6 +7,7 @@
         <title>WebProject - Login</title>
     </head>
     <body>
+        <%@include file="includes/menu.jsp" %>
         <div>
         <form action="Control" method="post">
             <input type="text" name="username" value="" placeholder="Username" />

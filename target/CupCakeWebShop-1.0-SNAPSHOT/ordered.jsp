@@ -13,6 +13,7 @@
         <title>Order Placed! </title>
     </head>
     <body>
+        <%@include file="includes/menu.jsp" %>
         <div>
         <h1>Order placed!</h1>
         

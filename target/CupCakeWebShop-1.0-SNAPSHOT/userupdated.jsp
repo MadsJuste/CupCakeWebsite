@@ -7,6 +7,7 @@
         <title>WebProject - UserUpdated</title>
     </head>
     <body>
+        <%@include file="includes/menu.jsp" %>
         <div>
         <h1>USER UPDATED</h1>
         

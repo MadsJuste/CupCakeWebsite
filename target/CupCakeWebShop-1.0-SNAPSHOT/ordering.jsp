@@ -8,6 +8,7 @@
         <title>Cupcake Choice</title>
     </head>
     <body>
+        <%@include file="includes/menu.jsp" %>
         <form action="Control" method="post"> 
             <select name ="bottom" >
                 <option value="1" selected>Chocolate 5.00kr</option>

@@ -14,6 +14,7 @@
         <title>Orders</title>
     </head>
     <body>
+        <%@include file="includes/menu.jsp" %>
         <div>
         <h1>Orders</h1>
         

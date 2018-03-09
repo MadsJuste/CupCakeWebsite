@@ -9,6 +9,7 @@
         <title>WebProject - Users</title>
     </head>
     <body>
+        <%@include file="includes/menu.jsp" %>
         <div>
         <h1>USERS</h1>
         

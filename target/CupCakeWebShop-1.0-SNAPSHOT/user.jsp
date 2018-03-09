@@ -8,6 +8,7 @@
         <title>WebProject - User</title>
     </head>
     <body>
+        <%@include file="includes/menu.jsp" %>
         <div>
         <h1>USER</h1>
             
@@ -32,6 +33,12 @@
             Password: <%= user.getPassword() %><br>
             Admin: <%= user.isAdmin() %><br>
         </p>
+        
+       
+        <form action="Control" method="post">
+            <input type="hidden" name="origin" value="order" />
+            <input type="submit" value="Order Cupcake" />
+        </form>
         
         <h2>UPDATE USER</h2>
         
