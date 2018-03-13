@@ -1,0 +1,49 @@
+@startuml
+
+title Cupcake website
+
+[*] --> Frontpage
+Frontpage --> Userpage : search user
+Userpage --> Frontpage : back
+Userpage --> Login : Login
+
+Frontpage --> Usercreated : create user
+Usercreated --> Frontpage : back
+Usercreated --> Login : Login
+
+Frontpage --> Frontpage : Front page
+Frontpage --> Login : Login
+
+Login --> Login : Login
+Login --> Frontpage : Front page
+Login --> User : Log in
+
+User --> Login : Login
+User --> Frontpage : Front page
+User --> Userupdated : Update user
+User --> Userdeleted : Delete User
+User --> Ordering : Order Cupcage
+
+Userupdated --> Frontpage : Back
+Userupdated --> Frontpage : Front page
+Userupdated --> Login : Login
+
+Userdeleted --> Frontpage : back
+Userdeleted --> Frontpage : Front page
+Userdeleted --> Login : Login
+
+Ordering --> Frontpage : Front page
+Ordering --> Login : Login
+Ordering --> Orders : Look at orders
+Ordering --> Ordered : Submit Cupcake
+
+Ordered --> Frontpage : Front page
+Ordered --> Login : Login
+Ordered --> Ordering : Back
+
+Orders --> Ordering : Back
+Orders --> Frontpage : Front page
+Orders --> Login : Login
+
+
+@enduml
