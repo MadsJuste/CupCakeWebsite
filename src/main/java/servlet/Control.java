@@ -99,6 +99,7 @@ public class Control extends HttpServlet {
 
                 response.sendRedirect("ordered.jsp");
             }
+              break;
             case "seeOrders": {
 
                 ArrayList<Order> orders = dm.getOrders((User) request.getSession().getAttribute("user"));
@@ -107,6 +108,7 @@ public class Control extends HttpServlet {
                 
                 response.sendRedirect("orders.jsp");
             }
+              break;
              case "order": {         
                 response.sendRedirect("ordering.jsp");
             }

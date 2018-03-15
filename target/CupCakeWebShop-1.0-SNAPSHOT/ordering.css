@@ -3,9 +3,13 @@ a
     display: block;
 }
 
-a, h1, h2, p, label, input
+a, h1, h2, p, label
 {
     font-family: times new roman;
+}
+input{
+     font-family: times new roman;
+    color: #000000;
 }
 
 body{

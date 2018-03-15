@@ -4,7 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="CreateSearch.css" rel="stylesheet" type="text/css"/>
-        <title>WebProject - Login</title>
+        <title>Cupcake - Login</title>
     </head>
     <body>
         <%@include file="includes/menu.jsp" %>
