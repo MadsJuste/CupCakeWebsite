@@ -9,14 +9,33 @@ import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * Class used to both write to the database and get data from the database and
+ * write to objects
+ *
+ * @author Temporalis
+ */
 public class DataMapper implements DataMapperInterface {
 
     private DBConnector dbc = new DBConnector();
 
+    /**
+     * basic constructor given a dataSource so it is able to connect to the
+     * database which is specified.
+     *
+     * @param ds the DataSource object, which contains information on the
+     * database
+     */
     public DataMapper(DataSource ds) {
         dbc.setDataSource(ds);
     }
 
+    /**
+     * A method used to get all users stored in the database and return them as
+     * an ArrayList of User objects
+     *
+     * @return an ArrayList with all User objects in the database
+     */
     @Override
     public ArrayList<User> getUsers() {
         ArrayList<User> users = new ArrayList();
@@ -24,7 +43,7 @@ public class DataMapper implements DataMapperInterface {
         try {
             dbc.open();
 
-            String sql = "select * from users";
+            String sql = "SELECT * FROM users";
             PreparedStatement preparedStatement = dbc.preparedStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -47,16 +66,25 @@ public class DataMapper implements DataMapperInterface {
         return users;
     }
 
+    /**
+     * A method that returns an ArrayList with all users that contains the
+     * specified input as user objects
+     *
+     * @param input is the input which the method sends to the database to check
+     * for mathces
+     * @return an ArrayList of user objects with a username which contains the
+     * input.
+     */
     @Override
-    public ArrayList<User> getUsers(String name) {
+    public ArrayList<User> getUsers(String input) {
         ArrayList<User> users = new ArrayList();
 
         try {
             dbc.open();
 
-            String sql = "select * from users where username like ?";
+            String sql = "SELECT * FROM users WHERE username LIKE ?";
             PreparedStatement preparedStatement = dbc.preparedStatement(sql);
-            preparedStatement.setString(1, "%" + name + "%");
+            preparedStatement.setString(1, "%" + input + "%");
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
@@ -78,6 +106,14 @@ public class DataMapper implements DataMapperInterface {
         return users;
     }
 
+    /**
+     * A method used to get a single user with the id matching the int input
+     *
+     * @param id is the input int which gets compared to the users in the
+     * database
+     * @return a single user object matching the info from the database. If
+     * there is none the user will be a null
+     */
     @Override
     public User getUser(int id) {
         User u = null;
@@ -85,7 +121,7 @@ public class DataMapper implements DataMapperInterface {
         try {
             dbc.open();
 
-            String sql = "select * from users where user_id = ?";
+            String sql = "SELECT * FROM users WHERE user_id = ?";
             PreparedStatement preparedStatement = dbc.preparedStatement(sql);
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -107,12 +143,21 @@ public class DataMapper implements DataMapperInterface {
         return u;
     }
 
+    /**
+     * A method used to get a single user with the username matching the name
+     * input
+     *
+     * @param name is the input String which gets compared to the users in the
+     * database
+     * @return a single user object matching the info from the database. If
+     * there is none the user will be a null
+     */
     @Override
     public User getUser(String name) {
         try {
             dbc.open();
 
-            String sql = "select * from users where username = ?";
+            String sql = "SELECT * FROM users WHERE username = ?";
             PreparedStatement preparedStatement = dbc.preparedStatement(sql);
             preparedStatement.setString(1, name);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -134,12 +179,21 @@ public class DataMapper implements DataMapperInterface {
         return null;
     }
 
+    /**
+     * A method that deletes a user from the database with an id matching the
+     * input
+     *
+     * @param id is the input int, which gets compared to the users in the
+     * database
+     * @return a boolean if the user has been successfully deleted from the
+     * database
+     */
     @Override
     public boolean deleteUser(int id) {
         try {
             dbc.open();
 
-            String sql = "delete from users where user_id = ?;";
+            String sql = "DELETE FROM users WHERE user_id = ?;";
             PreparedStatement preparedStatement = dbc.preparedStatement(sql);
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
@@ -154,16 +208,21 @@ public class DataMapper implements DataMapperInterface {
         return false;
     }
 
+    /**
+     * A method that updates a user in the database to match the user object
+     * parameter
+     *
+     * @param u is the input user object from which the updated information is
+     * gotten from
+     * @return a boolean true if the update was a success and a false if it
+     * failed.
+     */
     @Override
     public boolean updateUser(User u) {
         try {
             dbc.open();
 
-            String sql = "update users set "
-                    + "username = ?, "
-                    + "password = ?, "
-                    + "admin = ? "
-                    + "where user_id = ?";
+            String sql = "UPDATE users SET username = ?, password = ?, admin = ? WHERE user_id = ?";
             PreparedStatement preparedStatement = dbc.preparedStatement(sql);
             preparedStatement.setString(1, u.getUsername());
             preparedStatement.setString(2, u.getPassword());
@@ -181,12 +240,21 @@ public class DataMapper implements DataMapperInterface {
         return false;
     }
 
+    /**
+     * A method which adds a user matching the User object parameter to the
+     * database
+     *
+     * @param u is the User object from which information added to the database
+     * is received
+     * @return a boolean true if the update was a success and a false if it
+     * failed.
+     */
     @Override
     public boolean createUser(User u) {
         try {
             dbc.open();
 
-            String sql = "insert into users values(null, ?, ?, ?)";
+            String sql = "INSERT INTO users VALUES(null, ?, ?, ?)";
             PreparedStatement preparedStatement = dbc.preparedStatement(sql);
             preparedStatement.setString(1, u.getUsername());
             preparedStatement.setString(2, u.getPassword());
@@ -203,13 +271,23 @@ public class DataMapper implements DataMapperInterface {
         return false;
     }
 
+    /**
+     * A method which makes a simple check to find a user where both the
+     * username and password parameters match both the username and password
+     * fields stored in the database.
+     *
+     * @param username is the username which gets compared to the database
+     * @param password is the password which gets compared to the database
+     * @return a single user object on which both matches. If none exists then a
+     * null is returned instead.
+     */
     public User validateUser(String username, String password) {
         User user = null;
 
         try {
             dbc.open();
 
-            String sql = "select * from users where username = ? and password = ?";
+            String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
             PreparedStatement preparedStatement = dbc.preparedStatement(sql);
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
@@ -230,6 +308,17 @@ public class DataMapper implements DataMapperInterface {
         return user;
     }
 
+    /**
+     * This method creates an order in the database and links it to the user
+     * which placed the order
+     *
+     * @param o is the order object which contains information of bottom,
+     * topping and amount
+     * @param user is the user object with information on the user which has
+     * placed this the order o.
+     * @return a boolean true if the update was a success and a false if it
+     * failed.
+     */
     public boolean createOrder(Order o, User user) {
         try {
             dbc.open();
@@ -259,6 +348,14 @@ public class DataMapper implements DataMapperInterface {
         return false;
     }
 
+    /**
+     * A method which returns an ArrayList containing all orders placed by a
+     * specific user matching the user parameter
+     *
+     * @param user is the input user which is looked up in the database
+     * @return an ArrayList of order objects which contains all orders. If the
+     * ArrayList is empty no orders were found made by the customer
+     */
     public ArrayList<Order> getOrders(User user) {
         ArrayList<Order> orders = new ArrayList();
 
